@@ -1,0 +1,48 @@
+{
+  "name": "retractable",
+  "version": "1.0.5",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sauerm1/retractable.git"
+  },
+  "author": "Mark Sauer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sauerm1/retractable/issues"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src/component -d dist --copy-files"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^4.0.3"
+  }
+}
