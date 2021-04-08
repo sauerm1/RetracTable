@@ -3,7 +3,8 @@ import "./DataTable.css";
 import Search from "./Search/Search";
 
 const DataTable = (props) => {
-  const [displayedData, setDisplayedData] = useState(props.data);
+  const [normalizedData, setNormalizedData] = useState([]);
+  const [displayedData, setDisplayedData] = useState([]);
   const [fieldSelected, setFieldSelected] = useState("Search All");
   const [stringSearched, setStringSearched] = useState("");
   const [sort, setSort] = useState({
@@ -11,52 +12,88 @@ const DataTable = (props) => {
     order: "desc",
   });
 
-  const renderTableData = () => {
-    const data = displayedData;
-    const keys = Object.keys(props.data[0]);
+  useEffect(() => {
+    normalizeData(props.data);
+  }, [props.data]);
 
-    const headers = (
-      <div className="rTableRow">
-        {keys.map((header, index) => {
-          let arrow;
-          if (sort.field === header && sort.order === "asc") {
-            arrow = <i className="rarrow rdown"></i>;
-          } else if (sort.field === header && sort.order === "desc") {
-            arrow = <i className="rarrow rup"></i>;
-          } else {
-            arrow = <i className="rarrow rup rhide"></i>;
-          }
+  useEffect(() => {
+    setDisplayedData(normalizedData);
+  }, [normalizedData]);
+
+  const normalizeData = (data) => {
+    let keys = [];
+    for (const i in data) {
+      Object.keys(data[i]).forEach((i) => {
+        if (!keys.includes(i)) {
+          keys.push(i);
+        }
+      });
+    }
+    const normalizedData = data.map((r) => {
+      let row = {};
+      keys.forEach((k) => {
+        let cell;
+        if (r[k] !== undefined && r[k] !== null) {
+          cell = r[k];
+        } else {
+          cell = "";
+        }
+        row[k] = cell;
+      });
+      return row;
+    });
+    console.log(normalizedData);
+    setNormalizedData(normalizedData);
+  };
+
+  const renderTableData = (data) => {
+    console.log(data);
+    if (displayedData.length !== 0) {
+      const keys = Object.keys(data[0]);
+
+      const headers = (
+        <div className="rTableRow">
+          {keys.map((header, index) => {
+            let arrow;
+            if (sort.field === header && sort.order === "asc") {
+              arrow = <i className="rarrow rdown"></i>;
+            } else if (sort.field === header && sort.order === "desc") {
+              arrow = <i className="rarrow rup"></i>;
+            } else {
+              arrow = <i className="rarrow rup rhide"></i>;
+            }
+            return (
+              <div onClick={() => handleSort(header)} key={`header${index}`} className="rTableHead">
+                {header}
+                {arrow}
+              </div>
+            );
+          })}
+        </div>
+      );
+
+      const tableData = data.map((row, index) => {
+        const mappedRow = Object.values(row).map((value, index) => {
           return (
-            <div onClick={() => handleSort(header)} key={`header${index}`} className="rTableHead">
-              {header}
-              {arrow}
+            <div key={`data${index}`} className="rTableCell">
+              {value.toString()}
             </div>
           );
-        })}
-      </div>
-    );
+        });
 
-    const tableData = data.map((row, index) => {
-      const mappedRow = Object.values(row).map((value, index) => {
         return (
-          <div key={`data${index}`} className="rTableCell">
-            {value.toString()}
+          <div key={`row${index}`} className="rTableRow">
+            {mappedRow}
           </div>
         );
       });
-
       return (
-        <div key={`row${index}`} className="rTableRow">
-          {mappedRow}
+        <div className="rTable">
+          {headers}
+          {tableData}
         </div>
       );
-    });
-    return (
-      <div className="rTable">
-        {headers}
-        {tableData}
-      </div>
-    );
+    }
   };
 
   const compareObjects = (o1, o2) => {
@@ -81,18 +118,17 @@ const DataTable = (props) => {
 
   const searchData = (stringSearched) => {
     let results = [];
-    const data = props.data;
     const searchString = stringSearched.toUpperCase();
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < normalizedData.length; i++) {
       if (fieldSelected === "Search All") {
-        for (let key in data[i]) {
-          if (data[i][key].toString().toUpperCase().indexOf(searchString) !== -1) {
-            if (!itemExists(results, data[i])) results.push(data[i]);
+        for (let key in normalizedData[i]) {
+          if (normalizedData[i][key].toString().toUpperCase().indexOf(searchString) !== -1) {
+            if (!itemExists(results, normalizedData[i])) results.push(normalizedData[i]);
           }
         }
       } else {
-        if (data[i][fieldSelected].toString().toUpperCase().indexOf(searchString) !== -1) {
-          if (!itemExists(results, data[i])) results.push(data[i]);
+        if (normalizedData[i][fieldSelected].toString().toUpperCase().indexOf(searchString) !== -1) {
+          if (!itemExists(results, normalizedData[i])) results.push(normalizedData[i]);
         }
       }
     }
@@ -108,11 +144,13 @@ const DataTable = (props) => {
   }, [fieldSelected]);
 
   const toggleColumnsToSearch = () => {
-    const keys = Object.keys(props.data[0]);
-    const searchFields = keys.map((i, index) => {
-      return <option key={`search${index}`}>{i}</option>;
-    });
-    return searchFields;
+    if (normalizedData.length !== 0) {
+      const keys = Object.keys(normalizedData[0]);
+      const searchFields = keys.map((i, index) => {
+        return <option key={`search${index}`}>{i}</option>;
+      });
+      return searchFields;
+    }
   };
 
   const compareValues = (key, order = "asc") => {
@@ -168,7 +206,7 @@ const DataTable = (props) => {
         toggleColumnsToSearch={toggleColumnsToSearch}
         handleSearchFieldsChange={handleSearchFieldsChange}
       />
-      {renderTableData()}
+      {renderTableData(displayedData)}
     </div>
   );
 };
