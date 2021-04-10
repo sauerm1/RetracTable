@@ -3,9 +3,17 @@
     "userId": 1,
     "id": 2,
     "title": "delectus aut autem",
+    "object example": {
+      "userId": 1,
+      "id": 1,
+      "title": "laboriosam mollitia",
+      "numbers": [1,3,4],
+      "completed": false
+    }
+    ,
     "completed": true
   },
-  {
+  { 
     "userId": 1,
     "id": 1,
     "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
@@ -19,7 +27,7 @@
   },
   {
     "userId": 2,
-    "id": 2,
+    "id": 3,
     "title": "illo expedita consequatur quia in",
     "completed": false
   }

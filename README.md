@@ -1,9 +1,15 @@
 # RetracTable
 
-This project is a lightwight, zero dependency, react.js table. All that you have to do create a Table element and pass an array of objects to it as the `data` prop.
+This project is a scalable, lightwight, zero dependency, react.js table. All that you have to do create a Table element and pass an array of objects to it as the `data` prop.
 
 Robust features like sorting and searching are build in. Just give it a try.
 
+<br>
+
+### Get Started
+```sh
+npm i retractable
+```
 
 ### Useage
 ```js
@@ -20,11 +26,13 @@ const App = () => {
 export default App;
 ```
 
-this will produce a table like so...
+### This will produce a table like so...
 
-![image info](./public/example.png)
+![Eample](./public/example.png)
 
+<br>
 
-The table will normalize your data if there are any attributes missing from some objects. 
+### Nested data is now supported!
 
-Nested data is not supported... yet!
+![Eample](./public/objectExample.png)
+

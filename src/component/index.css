@@ -1,0 +1,115 @@
+.rTable {
+  display: table;
+  margin: 10px auto;
+  outline: 1px solid black;
+  border-top: 0.1px solid #000000;
+  border-left: 0.1px solid #000000;
+  border-right: 0.1px solid #000000;
+}
+
+.rTableHeading {
+  display: table-header-group;
+}
+
+.rTableHead {
+  display: table-cell;
+  border-bottom: 0.1px solid #000000;
+  background-color: rgb(235, 235, 235);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+.rTableRow {
+  display: table-row;
+}
+
+.rTableRow:nth-child(odd) {
+  background-color: rgb(247, 247, 247);
+}
+
+.rTableCell {
+  display: table-cell;
+  padding: 7px 10px;
+  border-bottom: 0.1px solid #000000;
+}
+
+.rArrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 5px;
+}
+
+.rArrorUp {
+  margin-bottom: -1px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.rArrowDown {
+  margin-bottom: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.rArrowHide {
+  visibility: hidden;
+}
+
+.rMoreDataLink {
+  position: relative;
+  color: rgb(53, 53, 255);
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: center;
+}
+
+.rMoreDataLink .rMoreData {
+    visibility: hidden;
+    /* width: 220px; */
+    background-color: rgb(41, 41, 41);
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 99%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: pre;
+    font-family: monospace;
+    cursor: text;
+}
+
+.rMoreDataLink .rMoreData::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  /* margin-left: 37px; */
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.rMoreDataLink:hover .rMoreData {
+  visibility: visible;
+}
+
+.rsearchContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.rsearchBox {
+  height: 19px;
+  margin: 1px;
+}
+
+.rdropdown {
+  height: 25px;
+  margin: 5px 10px;
+}

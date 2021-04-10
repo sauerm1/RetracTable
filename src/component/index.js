@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./DataTable.css";
+import "./index.css";
 import Search from "./Search/Search";
 
-const DataTable = (props) => {
+const DataTable = ({data}) => {
   const [normalizedData, setNormalizedData] = useState([]);
   const [displayedData, setDisplayedData] = useState([]);
   const [fieldSelected, setFieldSelected] = useState("Search All");
@@ -13,8 +13,8 @@ const DataTable = (props) => {
   });
 
   useEffect(() => {
-    normalizeData(props.data);
-  }, [props.data]);
+    normalizeData(data);
+  }, [data]);
 
   useEffect(() => {
     setDisplayedData(normalizedData);
@@ -42,25 +42,23 @@ const DataTable = (props) => {
       });
       return row;
     });
-    console.log(normalizedData);
     setNormalizedData(normalizedData);
   };
 
   const renderTableData = (data) => {
-    console.log(data);
-    if (displayedData.length !== 0) {
-      const keys = Object.keys(data[0]);
+    if (normalizedData.length !== 0) {
+      const keys = Object.keys(normalizedData[0]);
 
       const headers = (
         <div className="rTableRow">
           {keys.map((header, index) => {
             let arrow;
             if (sort.field === header && sort.order === "asc") {
-              arrow = <i className="rarrow rdown"></i>;
+              arrow = <i className="rArrow rArrowDown"></i>;
             } else if (sort.field === header && sort.order === "desc") {
-              arrow = <i className="rarrow rup"></i>;
+              arrow = <i className="rArrow rArrorUp"></i>;
             } else {
-              arrow = <i className="rarrow rup rhide"></i>;
+              arrow = <i className="rArrow rArrorUp rArrowHide"></i>;
             }
             return (
               <div onClick={() => handleSort(header)} key={`header${index}`} className="rTableHead">
@@ -74,19 +72,27 @@ const DataTable = (props) => {
 
       const tableData = data.map((row, index) => {
         const mappedRow = Object.values(row).map((value, index) => {
-          return (
-            <div key={`data${index}`} className="rTableCell">
-              {value.toString()}
-            </div>
-          );
+          if (typeof value === "object") {
+            return (
+              <div key={`data${index}`} className="rTableCell rMoreDataLink">
+                more
+                <div className="rMoreData">{JSON.stringify(value, null, 2)}</div>
+              </div>
+            );
+          } else
+            return (
+              <div key={`data${index}`} className="rTableCell">
+                {String(value)}
+              </div>
+            );
         });
-
         return (
           <div key={`row${index}`} className="rTableRow">
             {mappedRow}
           </div>
         );
       });
+
       return (
         <div className="rTable">
           {headers}
@@ -196,7 +202,7 @@ const DataTable = (props) => {
   };
 
   useEffect(() => {
-    handleSort(Object.keys(props.data[0])[0]);
+    handleSort(Object.keys(data[0])[0]);
   }, []);
 
   return (
