@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import Search from "./Search/Search";
 
-const DataTable = ({data}) => {
+const DataTable = ({data, capitalize}) => {
   const [normalizedData, setNormalizedData] = useState([]);
   const [displayedData, setDisplayedData] = useState([]);
   const [fieldSelected, setFieldSelected] = useState("Search All");
@@ -45,6 +45,10 @@ const DataTable = ({data}) => {
     setNormalizedData(normalizedData);
   };
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const renderTableData = (data) => {
     if (normalizedData.length !== 0) {
       const keys = Object.keys(normalizedData[0]);
@@ -62,7 +66,7 @@ const DataTable = ({data}) => {
             }
             return (
               <div onClick={() => handleSort(header)} key={`header${index}`} className="rTableHead">
-                {header}
+                {capitalize ? capitalizeFirstLetter(header) : header}
                 {arrow}
               </div>
             );

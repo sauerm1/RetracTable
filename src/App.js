@@ -4,7 +4,7 @@ const mockData = require('./mockData.json')
 
 const App = () => {
     return (
-        <DataTable data={mockData}/>
+        <DataTable data={mockData} capitalize/>
     )
 }
 
