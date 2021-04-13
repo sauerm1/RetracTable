@@ -11,7 +11,11 @@
   "bugs": {
     "url": "https://github.com/sauerm1/retractable/issues"
   },
-  "keywords": ["react", "table", "json"],
+  "keywords": [
+    "react",
+    "table",
+    "json"
+  ],
   "babel": {
     "presets": [
       "@babel/preset-react"

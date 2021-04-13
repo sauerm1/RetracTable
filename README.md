@@ -36,3 +36,17 @@ export default App;
 
 ![Eample](./public/objectExample.png)
 
+<br>
+
+## Props
+
+`capitalize` : This prop will capitalize the first letter of each column header when set to true.
+- default: false
+- required: false
+- options: true/false
+- useage: 
+```js
+return(
+    <Table data={data} capitalize>
+)
+```
