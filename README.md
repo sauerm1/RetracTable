@@ -1,6 +1,6 @@
 # RetracTable
 
-This project is a scalable, lightwight, zero dependency, react.js table. All that you have to do is create a `Table` element and pass an array of objects to it as the `data` prop.
+This project is a scalable, lightweight, zero dependency, responsive react.js table. All that you have to do is create a `Table` element and pass an array of objects to it as the `data` prop.
 
 Robust features like sorting and searching are build in. Just give it a try.
 
