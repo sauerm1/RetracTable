@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import Search from "./Search/Search";
 
-const DataTable = ({ data, capitalize }) => {
+const DataTable = ({ data, capitalize, excludeSearch }) => {
     const [normalizedData, setNormalizedData] = useState([]);
     const [displayedData, setDisplayedData] = useState([]);
-    const [fieldSelected, setFieldSelected] = useState("Search All");
+    const [fieldSelected, setFieldSelected] = useState("");
     const [stringSearched, setStringSearched] = useState("");
     const [sort, setSort] = useState({
         field: null,
@@ -147,7 +147,7 @@ const DataTable = ({ data, capitalize }) => {
         let results = [];
         const searchString = stringSearched.toUpperCase();
         for (var i = 0; i < normalizedData.length; i++) {
-            if (fieldSelected === "Search All") {
+            if (fieldSelected === "") {
                 for (let key in normalizedData[i]) {
                     if (
                         normalizedData[i][key]
@@ -186,7 +186,7 @@ const DataTable = ({ data, capitalize }) => {
         if (normalizedData.length !== 0) {
             const keys = Object.keys(normalizedData[0]);
             const searchFields = keys.map((i, index) => {
-                return <option key={`search${index}`}>{i}</option>;
+                return <option key={`search${index + 1}`}>{i}</option>;
             });
             return searchFields;
         }
@@ -242,11 +242,15 @@ const DataTable = ({ data, capitalize }) => {
 
     return (
         <div>
-            <Search
-                handleSearch={handleSearch}
-                toggleColumnsToSearch={toggleColumnsToSearch}
-                handleSearchFieldsChange={handleSearchFieldsChange}
-            />
+            {excludeSearch ? null : (
+                <Search
+                    fieldSelected={fieldSelected}
+                    handleSearch={handleSearch}
+                    toggleColumnsToSearch={toggleColumnsToSearch}
+                    handleSearchFieldsChange={handleSearchFieldsChange}
+                />
+            )}
+
             {renderTableData(displayedData)}
         </div>
     );

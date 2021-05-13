@@ -1,5 +1,5 @@
-const DataTable = require('./index')
+const DataTable = require("./index");
 
 test("Exists", () => {
-    expect(DataTable.exists)
-})
+    expect(DataTable.exists);
+});

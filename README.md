@@ -1,27 +1,31 @@
 # RetracTable
 
-This project is a scalable, lightwight, zero dependency, react.js table. All that you have to do create a `Table` element and pass an array of objects to it as the `data` prop.
+This project is a scalable, lightwight, zero dependency, react.js table. All that you have to do is create a `Table` element and pass an array of objects to it as the `data` prop.
 
 Robust features like sorting and searching are build in. Just give it a try.
 
 <br>
 
 ### Get Started
+
 ```sh
 npm i retractable
 ```
 
-### Useage
+### Usage
+
 ```js
-import React from 'react';
-import Table from 'retractable';
-const myData = require('./myData.json')
+import React from "react";
+import Table from "retractable";
+
+const people = [
+    { name: "Mark", age: 25 },
+    { name: "John", age: 52 },
+];
 
 const App = () => {
-    return (
-        <Table data={myData}/>
-    )
-}
+    return <Table data={people} />;
+};
 
 export default App;
 ```
@@ -36,17 +40,66 @@ export default App;
 
 ![Eample](./public/objectExample.png)
 
+<hr>
 <br>
 
-## Props
+# Props
 
-`capitalize` : This prop will capitalize the first letter of each column header when set to true.
-- default: false
-- required: false
-- options: true/false
-- useage: 
+| Prop Name                       | Required | Default | Usage                                      |
+| ------------------------------- | -------- | ------- | ------------------------------------------ |
+| [data](#data)                   | True     |         | [See `data` below](#data)                  |
+| [capitalize](#capitalize)       | False    | False   | [See `capitalize` below](#capitalize)      |
+| [excludeSearch](#excludeSearch) | False    | False   | [See `excludeSearch` below](#excludeSearch) |
+
+<hr>
+<br>
+
+## `data`
+
+This prop must contain an array of objects that you would like to make up your table.
+
+-   required: `true`
+-   default: `null`
+-   options: `[{},{},...]`
+-   usage:
+
+```js
+const people = [
+    { name: "Mark", age: 25 },
+    { name: "John", age: 52 },
+];
+
+const App = () => {
+    return <Table data={people} />;
+};
+```
+
+## `capitalize`
+
+This prop will capitalize the first letter of each column header when set to true.
+
+-   required: `false`
+-   default: `false`
+-   options: `true/false`
+-   usage:
+
 ```js
 return(
-    <Table data={data} capitalize>
+    <Table data={people} capitalize>
+)
+```
+
+## `excludeSearch`
+
+This prop will exclude the search feature from the table when set to true.
+
+-   required: `false`
+-   default: `false`
+-   options: `true/false`
+-   usage:
+
+```js
+return(
+    <Table data={people} excludeSearch>
 )
 ```

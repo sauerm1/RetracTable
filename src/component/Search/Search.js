@@ -1,6 +1,7 @@
 import React from "react";
 
 const Search = ({
+    fieldSelected,
     handleSearchFieldsChange,
     toggleColumnsToSearch,
     handleSearch,
@@ -8,13 +9,15 @@ const Search = ({
     return (
         <div className="rsearchContainer">
             <select onChange={handleSearchFieldsChange} className="rdropdown">
-                <option key="searchAll">Search All Columns</option>
+                <option value="" key="0">
+                    Search All Columns
+                </option>
                 {toggleColumnsToSearch()}
             </select>
             <input
                 className="rsearchBox"
                 onChange={(e) => handleSearch(e)}
-                placeholder="SEARCH"
+                placeholder={`Search ${fieldSelected}`}
             ></input>
         </div>
     );
