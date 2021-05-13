@@ -32,13 +32,13 @@ export default App;
 
 ### This will produce a table like so...
 
-![Eample](./public/example.png)
+![Example](./public/example.png)
 
 <br>
 
 ### Nested data is now supported!
 
-![Eample](./public/objectExample.png)
+![Example](./public/objectExample.png)
 
 <hr>
 <br>
@@ -46,10 +46,10 @@ export default App;
 
 # Props
 
-| Prop Name                       | Required | Default | Usage                                      |
-| ------------------------------- | -------- | ------- | ------------------------------------------ |
-| [data](#data)                   | True     |         | [See `data` below](#data)                  |
-| [capitalize](#capitalize)       | False    | False   | [See `capitalize` below](#capitalize)      |
+| Prop Name                       | Required | Default | Usage                                       |
+| ------------------------------- | -------- | ------- | ------------------------------------------- |
+| [data](#data)                   | True     |         | [See `data` below](#data)                   |
+| [capitalize](#capitalize)       | False    | False   | [See `capitalize` below](#capitalize)       |
 | [excludeSearch](#excludeSearch) | False    | False   | [See `excludeSearch` below](#excludeSearch) |
 
 <hr>
@@ -74,6 +74,7 @@ const App = () => {
     return <Table data={people} />;
 };
 ```
+
 <br>
 
 ## `capitalize`
@@ -90,6 +91,7 @@ return(
     <Table data={people} capitalize>
 )
 ```
+
 <br>
 
 ## `excludeSearch`
@@ -106,4 +108,5 @@ return(
     <Table data={people} excludeSearch>
 )
 ```
+
 <br>

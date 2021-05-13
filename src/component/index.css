@@ -1,12 +1,16 @@
+:root {
+    --rBlack: #000000;
+    --rDarkGrey: #1f1f1f;
+    --rLightGrey: #e3e3e3;
+    --rWhite: #ffffff;
+    --rBlue: #4a4aff;
+  }
+
 .rTable {
     display: table;
     margin: 10px auto;
-    outline: 1px solid black;
-    border-top: 0.1px solid #000000;
-    border-left: 0.1px solid #000000;
-    border-right: 0.1px solid #000000;
-    border-radius: 15px;
-    outline-style: auto;
+    border: 1px solid var(--rLightGrey);
+    border-radius: 5px;
 }
 
 .rTableHeading {
@@ -15,8 +19,7 @@
 
 .rTableHead {
     display: table-cell;
-    border-bottom: 0.1px solid #000000;
-    background-color: rgb(235, 235, 235);
+    background-color: var(--rLightGrey);
     font-weight: bold;
     cursor: pointer;
     padding: 10px 10px;
@@ -26,18 +29,19 @@
     display: table-row;
 }
 
-.rTableRow:nth-child(odd) {
-    background-color: rgb(247, 247, 247);
+.rTableCell:first-child {
+    border-left: none;
 }
 
 .rTableCell {
     display: table-cell;
     padding: 8px 10px;
-    border-bottom: 0.1px solid #000000;
+    border-top:  1px solid var(--rLightGrey);
+    border-left: 1px solid var(--rLightGrey);
 }
 
 .rArrow {
-    border: solid black;
+    border: solid var(--rDarkGrey);
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -62,7 +66,7 @@
 
 .rMoreDataLink {
     position: relative;
-    color: rgb(53, 53, 255);
+    color: var(--rBlue);
     text-decoration: underline;
     cursor: pointer;
     text-align: center;
@@ -70,7 +74,7 @@
 
 .rMoreDataLink .rMoreData {
     visibility: hidden;
-    background-color: rgb(41, 41, 41);
+    background-color: var(--rDarkGrey);
     color: #fff;
     text-align: left;
     border-radius: 6px;
@@ -92,7 +96,7 @@
     left: 50%;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent black transparent;
+    border-color: transparent transparent var(--rDarkGrey) transparent;
 }
 
 .rMoreDataLink:hover .rMoreData {
@@ -109,7 +113,7 @@
     max-width: 200px;
     margin: 0px 10px;
     border-radius: 5px;
-    border: solid 1px #000000;
+    border: solid 1px var(--rLightGrey);
     margin-top: 1px;
 }
 
@@ -118,7 +122,6 @@
     max-width: 200px;
     margin: 0px 10px;
     border-radius: 5px;
-    border: solid 1px #000000;
+    border: solid 1px var(--rLightGrey);
     padding: 1px 10px;
-    color: #000000;
 }
