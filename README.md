@@ -6,13 +6,13 @@ Robust features like sorting and searching are build in. Just give it a try.
 
 <br>
 
-### Get Started
+## Get Started
 
 ```sh
 npm i retractable
 ```
 
-### Usage
+## Usage
 
 ```js
 import React from "react";
@@ -41,6 +41,7 @@ export default App;
 ![Eample](./public/objectExample.png)
 
 <hr>
+<br>
 <br>
 
 # Props
@@ -73,6 +74,7 @@ const App = () => {
     return <Table data={people} />;
 };
 ```
+<br>
 
 ## `capitalize`
 
@@ -88,6 +90,7 @@ return(
     <Table data={people} capitalize>
 )
 ```
+<br>
 
 ## `excludeSearch`
 
@@ -103,3 +106,4 @@ return(
     <Table data={people} excludeSearch>
 )
 ```
+<br>
