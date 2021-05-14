@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import Search from "./Search/Search";
 
-const DataTable = ({ data, capitalize, excludeSearch }) => {
+const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
     const [normalizedData, setNormalizedData] = useState([]);
     const [displayedData, setDisplayedData] = useState([]);
     const [fieldSelected, setFieldSelected] = useState("");
@@ -52,7 +52,6 @@ const DataTable = ({ data, capitalize, excludeSearch }) => {
     const renderTableData = (data) => {
         if (normalizedData.length !== 0) {
             const keys = Object.keys(normalizedData[0]);
-
             const headers = (
                 <div className="rTableRow">
                     {keys.map((header, index) => {
@@ -107,12 +106,17 @@ const DataTable = ({ data, capitalize, excludeSearch }) => {
                         );
                 });
                 return (
-                    <div key={`row${index}`} className="rTableRow">
+                    <div
+                        onClick={rowOnClick ? () => rowOnClick(row) : null}
+                        key={`row${index}`}
+                        className={`rTableRow ${
+                            rowOnClick ? "rTableRowHover" : ""
+                        }`}
+                    >
                         {mappedRow}
                     </div>
                 );
             });
-
             return (
                 <div className="rTable">
                     {headers}

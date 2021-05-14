@@ -1,10 +1,10 @@
 :root {
     --rBlack: #000000;
     --rDarkGrey: #1f1f1f;
-    --rLightGrey: #e3e3e3;
+    --rLightGrey: #ebebeb;
     --rWhite: #ffffff;
     --rBlue: #4a4aff;
-  }
+}
 
 .rTable {
     display: table;
@@ -29,6 +29,11 @@
     display: table-row;
 }
 
+.rTableRowHover:hover {
+    background-color: var(--rLightGrey);
+    cursor: pointer;
+}
+
 .rTableCell:first-child {
     border-left: none;
 }
@@ -36,7 +41,7 @@
 .rTableCell {
     display: table-cell;
     padding: 8px 10px;
-    border-top:  1px solid var(--rLightGrey);
+    border-top: 1px solid var(--rLightGrey);
     border-left: 1px solid var(--rLightGrey);
 }
 
@@ -68,7 +73,7 @@
     position: relative;
     color: var(--rBlue);
     text-decoration: underline;
-    cursor: pointer;
+    /* cursor: pointer; */
     text-align: center;
 }
 
@@ -115,6 +120,7 @@
     border-radius: 5px;
     border: solid 1px var(--rLightGrey);
     margin-top: 1px;
+    cursor: pointer;
 }
 
 .rsearchBox {

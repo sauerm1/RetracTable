@@ -51,6 +51,7 @@ export default App;
 | [data](#data)                   | True     |         | [See `data` below](#data)                   |
 | [capitalize](#capitalize)       | False    | False   | [See `capitalize` below](#capitalize)       |
 | [excludeSearch](#excludeSearch) | False    | False   | [See `excludeSearch` below](#excludeSearch) |
+| [rowOnClick](#rowOnClick)       | False    | False   | [See `rowOnClick` below](#rowOnClick)       |
 
 <hr>
 <br>
@@ -106,6 +107,27 @@ This prop will exclude the search feature from the table when set to true.
 ```js
 return(
     <Table data={people} excludeSearch>
+)
+```
+
+<br>
+
+## `rowOnClick`
+
+Pass a function to the `rowOnClick` prop and it will be executed when a row is clicked on. The row that is clicked on will be passed as an object to your function's first argument
+
+-   required: `false`
+-   default: `null`
+-   options: `typeof function`
+-   usage:
+
+```js
+const testCallback = (row) => {
+    console.log(row);
+};
+
+return(
+    <Table data={people} rowOnClick={testCallback} >
 )
 ```
 
