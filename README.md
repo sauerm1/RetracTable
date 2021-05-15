@@ -1,6 +1,6 @@
 # RetracTable
 
-This project is a scalable, lightweight, zero dependency, responsive react.js table. All that you have to do is create a `Table` element and pass an array of objects to it as the `data` prop.
+This project is a scalable, lightweight, zero dependency, responsive react.js table. All that you have to do is add a `Table` element and pass an array of objects to it as the `data` prop.
 
 Robust features like sorting and searching are build in. Just give it a try.
 
@@ -18,13 +18,15 @@ npm i retractable
 import React from "react";
 import Table from "retractable";
 
-const people = [
-    { name: "Mark", age: 25 },
-    { name: "John", age: 52 },
+const tasks = [
+    { userId: 1, id: 1, title: "Grocery Shopping", completed: false },
+    { userId: 1, id: 2, title: "Change lightbulb", completed: false },
+    { userId: 1, id: 3, title: "Pick up kids", completed: true },
+    { userId: 1, id: 4, title: "Cut grass", completed: true },
 ];
 
 const App = () => {
-    return <Table data={people} />;
+    return <Table data={tasks} />;
 };
 
 export default App;
@@ -122,12 +124,15 @@ Pass a function to the `rowOnClick` prop and it will be executed when a row is c
 -   usage:
 
 ```js
-const testCallback = (row) => {
-    console.log(row);
+const myCallbackFunction = (row) => {
+    console.log(row); // returns: { userId: 1, id: 4, title: "Cut grass", completed: true }
+    
+    // do something with the row object here ...
+    
 };
 
 return(
-    <Table data={people} rowOnClick={testCallback} >
+    <Table data={people} rowOnClick={myCallbackFunction} >
 )
 ```
 

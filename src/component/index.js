@@ -20,6 +20,10 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
         setDisplayedData(normalizedData);
     }, [normalizedData]);
 
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
     const normalizeData = (data) => {
         let keys = [];
         for (const i in data) {
@@ -38,16 +42,14 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
                 } else {
                     cell = "";
                 }
-                row[k] = cell;
+                row[capitalize ? capitalizeFirstLetter(k) : k] = cell
             });
             return row;
         });
         setNormalizedData(normalizedData);
     };
 
-    const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
+
 
     const renderTableData = (data) => {
         if (normalizedData.length !== 0) {
