@@ -3,7 +3,7 @@ import React from "react";
 const Search = ({
     fieldSelected,
     handleSearchFieldsChange,
-    toggleColumnsToSearch,
+    searchFieldsOptions,
     handleSearch,
 }) => {
     return (
@@ -12,7 +12,7 @@ const Search = ({
                 <option value="" key="0">
                     Search All Columns
                 </option>
-                {toggleColumnsToSearch()}
+                {searchFieldsOptions()}
             </select>
             <input
                 className="rsearchBox"

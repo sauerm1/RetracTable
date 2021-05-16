@@ -1,55 +1,36 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import Search from "./Search/Search";
+import normalizeData from "./utils/normalizeData";
+import searchData from "./utils/searchData";
 
 const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
     const [normalizedData, setNormalizedData] = useState([]);
     const [displayedData, setDisplayedData] = useState([]);
     const [fieldSelected, setFieldSelected] = useState("");
     const [stringSearched, setStringSearched] = useState("");
-    const [sort, setSort] = useState({
+    const [sortState, setSortState] = useState({
         field: null,
         order: "desc",
     });
 
     useEffect(() => {
-        normalizeData(data);
+        setNormalizedData(normalizeData(data, capitalize));
     }, [data]);
 
     useEffect(() => {
         setDisplayedData(normalizedData);
     }, [normalizedData]);
 
-    const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
+    useEffect(() => {
+        setDisplayedData(
+            searchData(normalizedData, stringSearched, fieldSelected)
+        );
+    }, [stringSearched, fieldSelected]);
 
-    const normalizeData = (data) => {
-        let keys = [];
-        for (const i in data) {
-            Object.keys(data[i]).forEach((i) => {
-                if (!keys.includes(i)) {
-                    keys.push(i);
-                }
-            });
-        }
-        const normalizedData = data.map((r) => {
-            let row = {};
-            keys.forEach((k) => {
-                let cell;
-                if (r[k] !== undefined && r[k] !== null) {
-                    cell = r[k];
-                } else {
-                    cell = "";
-                }
-                row[capitalize ? capitalizeFirstLetter(k) : k] = cell
-            });
-            return row;
-        });
-        setNormalizedData(normalizedData);
-    };
-
-
+    useEffect(() => {
+        handleSort(sortState, Object.keys(data[0])[0]);
+    }, []);
 
     const renderTableData = (data) => {
         if (normalizedData.length !== 0) {
@@ -58,11 +39,14 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
                 <div className="rTableRow">
                     {keys.map((header, index) => {
                         let arrow;
-                        if (sort.field === header && sort.order === "asc") {
+                        if (
+                            sortState.field === header &&
+                            sortState.order === "asc"
+                        ) {
                             arrow = <i className="rArrow rArrowDown"></i>;
                         } else if (
-                            sort.field === header &&
-                            sort.order === "desc"
+                            sortState.field === header &&
+                            sortState.order === "desc"
                         ) {
                             arrow = <i className="rArrow rArrorUp"></i>;
                         } else {
@@ -72,13 +56,11 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
                         }
                         return (
                             <div
-                                onClick={() => handleSort(header)}
+                                onClick={() => handleSort(sortState, header)}
                                 key={`header${index}`}
                                 className="rTableHead"
                             >
-                                {capitalize
-                                    ? capitalizeFirstLetter(header)
-                                    : header}
+                                {header}
                                 {arrow}
                             </div>
                         );
@@ -128,67 +110,15 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
         }
     };
 
-    const compareObjects = (o1, o2) => {
-        var k = "";
-        for (k in o1) if (o1[k] !== o2[k]) return false;
-        for (k in o2) if (o1[k] !== o2[k]) return false;
-        return true;
-    };
-
-    const itemExists = (haystack, needle) => {
-        for (var i = 0; i < haystack.length; i++)
-            if (compareObjects(haystack[i], needle)) return true;
-        return false;
-    };
-
     const handleSearch = (toSearch) => {
         setStringSearched(toSearch.target.value);
-    };
-
-    useEffect(() => {
-        searchData(stringSearched);
-    }, [stringSearched]);
-
-    const searchData = (stringSearched) => {
-        let results = [];
-        const searchString = stringSearched.toUpperCase();
-        for (var i = 0; i < normalizedData.length; i++) {
-            if (fieldSelected === "") {
-                for (let key in normalizedData[i]) {
-                    if (
-                        normalizedData[i][key]
-                            .toString()
-                            .toUpperCase()
-                            .indexOf(searchString) !== -1
-                    ) {
-                        if (!itemExists(results, normalizedData[i]))
-                            results.push(normalizedData[i]);
-                    }
-                }
-            } else {
-                if (
-                    normalizedData[i][fieldSelected]
-                        .toString()
-                        .toUpperCase()
-                        .indexOf(searchString) !== -1
-                ) {
-                    if (!itemExists(results, normalizedData[i]))
-                        results.push(normalizedData[i]);
-                }
-            }
-        }
-        setDisplayedData(results);
     };
 
     const handleSearchFieldsChange = (event) => {
         setFieldSelected(event.target.value);
     };
 
-    useEffect(() => {
-        searchData(stringSearched);
-    }, [fieldSelected]);
-
-    const toggleColumnsToSearch = () => {
+    const searchFieldsOptions = () => {
         if (normalizedData.length !== 0) {
             const keys = Object.keys(normalizedData[0]);
             const searchFields = keys.map((i, index) => {
@@ -198,7 +128,7 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
         }
     };
 
-    const compareValues = (key, order = "asc") => {
+    const compareValues = (key, order) => {
         return (a, b) => {
             if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
                 return 0;
@@ -219,32 +149,28 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
         };
     };
 
-    const handleSort = (newField) => {
-        let newOrder;
-        if (sort.field === newField) {
-            switch (sort.order) {
-                case "asc":
-                    newOrder = "desc";
-                    break;
-                case "desc":
-                    newOrder = "asc";
-                    break;
-                default:
-                    newOrder = "asc";
-            }
-        } else if (sort.field === null || sort.field !== newField) {
-            newOrder = "asc";
+    const getNewSortOrder = (sortState, sortField) => {
+        let newSortOrder;
+        if (sortState.field === sortField) {
+            sortState?.order === "asc"
+                ? (newSortOrder = "desc")
+                : (newSortOrder = "asc");
+        } else if (sortState.field === null || sortState.field !== sortField) {
+            newSortOrder = "asc";
         }
-        setSort({
-            field: newField,
-            order: newOrder,
-        });
-        setDisplayedData(displayedData.sort(compareValues(newField, newOrder)));
+        return newSortOrder
     };
 
-    useEffect(() => {
-        handleSort(Object.keys(data[0])[0]);
-    }, []);
+    const handleSort = (sortState, sortField) => {
+        const newSortOrder = getNewSortOrder(sortState, sortField)
+        setSortState({
+            field: sortField,
+            order: newSortOrder,
+        });
+        setDisplayedData(
+            displayedData.sort(compareValues(sortField, newSortOrder))
+        );
+    };
 
     return (
         <div>
@@ -252,7 +178,7 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
                 <Search
                     fieldSelected={fieldSelected}
                     handleSearch={handleSearch}
-                    toggleColumnsToSearch={toggleColumnsToSearch}
+                    searchFieldsOptions={searchFieldsOptions}
                     handleSearchFieldsChange={handleSearchFieldsChange}
                 />
             )}
