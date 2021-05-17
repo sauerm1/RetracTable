@@ -1,4 +1,4 @@
-const DataTable = require("../index");
+import  DataTable from "../component/index";
 
 test("Component Exists", () => {
     expect(DataTable.exists);

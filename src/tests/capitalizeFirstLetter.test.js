@@ -1,4 +1,4 @@
-import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
+import capitalizeFirstLetter from "../component/utils/capitalizeFirstLetter";
 
 test("Capitalize First Letter", () => {
     const word = "hello"

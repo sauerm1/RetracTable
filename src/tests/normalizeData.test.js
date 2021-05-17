@@ -1,4 +1,4 @@
-import normalizeData from "../utils/normalizeData";
+import normalizeData from "../component/utils/normalizeData";
 
 const abnormalData = [
     {

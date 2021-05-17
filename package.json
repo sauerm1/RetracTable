@@ -23,7 +23,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "build": "mkdir dist && babel src/component -d dist --copy-files"
   },

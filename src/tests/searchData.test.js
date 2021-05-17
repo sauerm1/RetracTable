@@ -1,4 +1,4 @@
-import searchData from "../utils/searchData";
+import searchData from "../component/utils/searchData";
 
 test("Search Data", () => {
     const normalizedData = [
