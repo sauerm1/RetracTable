@@ -11,6 +11,10 @@ Robust features like sorting and searching are build in. Just give it a try.
 ```sh
 npm i retractable
 ```
+or 
+```sh
+yarn add retractable
+```
 
 ## Usage
 
