@@ -4,7 +4,7 @@ import Search from "./Search/Search";
 import normalizeData from "./utils/normalizeData";
 import searchData from "./utils/searchData";
 import compareFunction from "./utils/compareFunction";
-
+import getNewSortOrder from "./utils/getNewSortOrder";
 
 const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
     const [normalizedData, setNormalizedData] = useState([]);
@@ -130,20 +130,8 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
         }
     };
 
-    const getNewSortOrder = (sortState, sortField) => {
-        let newSortOrder;
-        if (sortState.field === sortField) {
-            sortState?.order === "asc"
-                ? (newSortOrder = "desc")
-                : (newSortOrder = "asc");
-        } else if (sortState.field === null || sortState.field !== sortField) {
-            newSortOrder = "asc";
-        }
-        return newSortOrder
-    };
-
     const handleSort = (sortState, sortField) => {
-        const newSortOrder = getNewSortOrder(sortState, sortField)
+        const newSortOrder = getNewSortOrder(sortState, sortField);
         setSortState({
             field: sortField,
             order: newSortOrder,
@@ -163,7 +151,6 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
                     handleSearchFieldsChange={handleSearchFieldsChange}
                 />
             )}
-
             {renderTableData(displayedData)}
         </div>
     );

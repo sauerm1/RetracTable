@@ -1,6 +1,6 @@
 {
   "name": "retractable",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -18,14 +18,15 @@
   ],
   "babel": {
     "presets": [
-      "@babel/preset-react"
+      "@babel/preset-react",
+      "minify"
     ]
   },
   "scripts": {
     "dev": "react-scripts start",
     "test": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "build": "mkdir dist && babel src/component -d dist --copy-files"
+    "build": "rm -rf dist && mkdir dist && babel src/component -d dist --copy-files"
   },
   "browserslist": {
     "production": [
@@ -45,8 +46,10 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.2",
+    "babel-preset-minify": "^0.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3"
-  }
+  },
+  "dependencies": {}
 }
