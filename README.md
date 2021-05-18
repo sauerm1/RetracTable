@@ -1,7 +1,7 @@
 # RetracTable
 
-<a href="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg">
-<img src="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg" />
+<a href="https://github.com/sauerm1/RetracTable/workflows/tests/badge.svg">
+<img src="https://github.com/sauerm1/RetracTable/workflows/tests/badge.svg" />
 </a>
 
 <!-- [![retractable](https://snyk.io/advisor/npm-package/retractable/badge.svg)](https://snyk.io/advisor/npm-package/retractable) -->

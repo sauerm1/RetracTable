@@ -1,7 +1,6 @@
 import React from "react";
 import DataTable from "./component";
-const mockData = require("./mockData/mockData.json");
-// const mockData = require("./mockData/mockDataWithObject.json");
+const mockData = require("./mockData/data.json");
 
 const testCallback = (data) => {
     console.log(data);

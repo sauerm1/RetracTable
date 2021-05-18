@@ -1,0 +1,37 @@
+[
+	{
+		"userId": 1,
+		"id": 1,
+		"task title": "Grocery shopping",
+		"completed": false,
+        "date": "2023-01-23T18:25:43.511Z"
+	},
+	{
+		"userId": 1,
+		"id": 2,
+		"task title": "Change lightbulb",
+		"completed": false,
+        "date": "2021-02-23T18:25:43.511Z"
+	},
+	{
+		"userId": 1,
+		"id": 3,
+		"task title": "Pick up kids",
+		"completed": true,
+        "date": "2021-01-23T18:25:43.511Z"
+	},
+    {
+		"userId": 1,
+		"id": 3,
+		"task title": "Pick up kids",
+		"completed": true,
+        "date": "2021-01-23T18:25:43.511Z"
+	},
+	{
+		"userId": 1,
+		"id": 4,
+		"task title": "Cut grass",
+		"completed": true,
+        "date": "2021-01-23T18:26:43.511Z"
+	}
+]
