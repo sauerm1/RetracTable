@@ -1,12 +1,12 @@
-const compareValues = (key, order) => {
+const compareFunction = (column, order) => {
     return (a, b) => {
-        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        if (!a.hasOwnProperty(column) || !b.hasOwnProperty(column)) {
             return 0;
         }
         const varA =
-            typeof a[key] === "string" ? a[key].toUpperCase() : a[key];
+            typeof a[column] === "string" ? a[column].toUpperCase() : a[column];
         const varB =
-            typeof b[key] === "string" ? b[key].toUpperCase() : b[key];
+            typeof b[column] === "string" ? b[column].toUpperCase() : b[column];
         let comparison = 0;
         if (varA > varB) {
             comparison = 1;
@@ -17,4 +17,4 @@ const compareValues = (key, order) => {
     };
 };
 
-export default compareValues;
+export default compareFunction;

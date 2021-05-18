@@ -28,7 +28,22 @@ const normalizedData = [
     },
 ];
 
+const normalizedDataCapitalized = [
+    {
+        UserId: 1,
+        Id: 1,
+        Title: "",
+        Completed: false,
+    },
+    {
+        UserId: 1,
+        Id: 2,
+        Title: "Change lightbulb",
+        Completed: "",
+    },
+];
 
 test("Normalizes Data", () => {
     expect(normalizeData(abnormalData)).toStrictEqual(normalizedData);
+    expect(normalizeData(abnormalData, true)).toStrictEqual(normalizedDataCapitalized);
 });
