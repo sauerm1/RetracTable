@@ -1,5 +1,27 @@
 # RetracTable
 
+<a href="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg">
+<img src="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg" />
+</a>
+
+<a href="https://npmjs.com/package/RetracTable" target="\_parent">
+  <img alt="" src="https://img.shields.io/npm/dm/retractable" />
+</a>
+
+<!-- <a href="https://bundlephobia.com/result?p=retractable@latest" target="\_parent">
+  <img alt="" src="https://badgen.net/bundlephobia/minzip/retractable@latest" />
+</a> -->
+
+<a href="https://github.com/sauerm1/RetracTable/discussions">
+  <img alt="Join the discussion on Github" src="https://img.shields.io/badge/Github%20Discussions%20%26%20Support-Chat%20now!-blue" />
+</a>
+
+<!-- <a href="https://github.com/sauerm1/RetracTable" target="\_parent">
+  <img alt="" src="https://img.shields.io/github/stars/sauerm1/retractable?style=social" 
+  /></a> -->
+
+<br>
+<br>
 This project is a scalable, lightweight, zero dependency, responsive react.js table. All that you have to do is add a `Table` element and pass an array of objects to it as the `data` prop.
 
 Robust features like sorting and searching are build in. Just give it a try.
@@ -11,7 +33,9 @@ Robust features like sorting and searching are build in. Just give it a try.
 ```sh
 npm i retractable
 ```
-or 
+
+or
+
 ```sh
 yarn add retractable
 ```
@@ -130,9 +154,9 @@ Pass a function to the `onRowClick` prop and it will be executed when a row is c
 ```js
 const myCallbackFunction = (row) => {
     console.log(row); // returns: { userId: 1, id: 4, title: "Cut grass", completed: true }
-    
+
     // do something with the row object here ...
-    
+
 };
 
 return(
