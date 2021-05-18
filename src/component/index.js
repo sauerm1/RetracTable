@@ -6,7 +6,7 @@ import searchData from "./utils/searchData";
 import compareFunction from "./utils/compareFunction";
 import getNewSortOrder from "./utils/getNewSortOrder";
 
-const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
+const DataTable = ({ data, capitalize, excludeSearch, onRowClick }) => {
     const [normalizedData, setNormalizedData] = useState([]);
     const [displayedData, setDisplayedData] = useState([]);
     const [fieldSelected, setFieldSelected] = useState("");
@@ -93,10 +93,10 @@ const DataTable = ({ data, capitalize, excludeSearch, rowOnClick }) => {
                 });
                 return (
                     <div
-                        onClick={rowOnClick ? () => rowOnClick(row) : null}
+                        onClick={onRowClick ? () => onRowClick(row) : null}
                         key={`row${index}`}
                         className={`rTableRow ${
-                            rowOnClick ? "rTableRowHover" : ""
+                            onRowClick ? "rTableRowHover" : ""
                         }`}
                     >
                         {mappedRow}

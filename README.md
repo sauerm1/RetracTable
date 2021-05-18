@@ -57,7 +57,7 @@ export default App;
 | [data](#data)                   | True     |         | [See `data` below](#data)                   |
 | [capitalize](#capitalize)       | False    | False   | [See `capitalize` below](#capitalize)       |
 | [excludeSearch](#excludeSearch) | False    | False   | [See `excludeSearch` below](#excludeSearch) |
-| [rowOnClick](#rowOnClick)       | False    | False   | [See `rowOnClick` below](#rowOnClick)       |
+| [onRowClick](#onRowClick)       | False    | False   | [See `onRowClick` below](#onRowClick)       |
 
 <hr>
 <br>
@@ -118,9 +118,9 @@ return(
 
 <br>
 
-## `rowOnClick`
+## `onRowClick`
 
-Pass a function to the `rowOnClick` prop and it will be executed when a row is clicked on. The row that is clicked on will be passed as an object to your function's first argument
+Pass a function to the `onRowClick` prop and it will be executed when a row is clicked on. The row that is clicked on will be passed as an object to your function's first argument
 
 -   required: `false`
 -   default: `null`
@@ -136,7 +136,7 @@ const myCallbackFunction = (row) => {
 };
 
 return(
-    <Table data={people} rowOnClick={myCallbackFunction} >
+    <Table data={people} onRowClick={myCallbackFunction} >
 )
 ```
 

@@ -12,7 +12,7 @@ const App = () => {
         <DataTable 
             data={mockData} 
             capitalize 
-            rowOnClick={testCallback} 
+            onRowClick={testCallback} 
         />
     );
 };
