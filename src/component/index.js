@@ -119,17 +119,7 @@ const DataTable = ({ data, capitalize, excludeSearch, onRowClick }) => {
     const handleSearchFieldsChange = (event) => {
         setFieldSelected(event.target.value);
     };
-
-    const searchFieldsOptions = () => {
-        if (normalizedData.length !== 0) {
-            const keys = Object.keys(normalizedData[0]);
-            const searchFields = keys.map((i, index) => {
-                return <option key={`search${index + 1}`}>{i}</option>;
-            });
-            return searchFields;
-        }
-    };
-
+    
     const handleSort = (sortState, sortField) => {
         const newSortOrder = getNewSortOrder(sortState, sortField);
         setSortState({
@@ -147,7 +137,7 @@ const DataTable = ({ data, capitalize, excludeSearch, onRowClick }) => {
                 <Search
                     fieldSelected={fieldSelected}
                     handleSearch={handleSearch}
-                    searchFieldsOptions={searchFieldsOptions}
+                    normalizedData={normalizedData}
                     handleSearchFieldsChange={handleSearchFieldsChange}
                 />
             )}
