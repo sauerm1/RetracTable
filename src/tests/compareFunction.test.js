@@ -1,47 +1,60 @@
 import compareFunction from "../component/utils/compareFunction";
 
-test("Compare Function", () => {
-    const idSorted = [
-        {
-            userId: 12,
-            id: 1,
-            title: "ghi",
-            completed: true,
-        },
-        {
-            userId: 11,
-            id: 2,
-            title: "def",
-            completed: false,
-        },
-        {
-            userId: 10,
-            id: 3,
-            title: "abc",
-            completed: true,
-        },
-    ];
+const data = [
+    {
+        "userId": 3,
+        "id": 6,
+        "task title": "c f i",
+        "completed": false,
+        "date": "2023-01-23T18:25:43.511Z"
+    },
+    {
+        "userId": 2,
+        "id": 5,
+        "task title": "b e h",
+        "completed": true,
+        "date": "2021-02-23T18:25:43.511Z"
+    },
+    {
+        "userId": 1,
+        "id": 4,
+        "task title": "a d g",
+        "completed": "",
+        "date": "2021-01-23T18:26:43.511Z"
+    }
+]
 
-    const titleSorted = [
-        {
-            userId: 10,
-            id: 3,
-            title: "abc",
-            completed: true,
-        },
-        {
-            userId: 11,
-            id: 2,
-            title: "def",
-            completed: false,
-        },
-        {
-            userId: 12,
-            id: 1,
-            title: "ghi",
-            completed: true,
-        },
-    ];
-    expect(idSorted.sort(compareFunction("title", "asc"))).toStrictEqual(titleSorted);
-    expect(titleSorted.sort(compareFunction("id", "desc"))).toStrictEqual(titleSorted);
+
+const sortedData = [
+    {
+        "userId": 1,
+        "id": 4,
+        "task title": "a d g",
+        "completed": "",
+        "date": "2021-01-23T18:26:43.511Z"
+    },
+    {
+        "userId": 2,
+        "id": 5,
+        "task title": "b e h",
+        "completed": true,
+        "date": "2021-02-23T18:25:43.511Z"
+    },
+    {
+        "userId": 3,
+        "id": 6,
+        "task title": "c f i",
+        "completed": false,
+        "date": "2023-01-23T18:25:43.511Z"
+    }
+]
+
+test("Sort string", () => {
+    expect(data.sort(compareFunction("task title", "asc"))).toStrictEqual(sortedData);
+});
+test("Sort number", () => {
+    expect(data.sort(compareFunction("id", "desc"))).toStrictEqual(data);
+});
+test("Sort date", () => {
+    expect(data.sort(compareFunction("date", "asc"))).toStrictEqual(sortedData);
 });

@@ -19,5 +19,5 @@ test("New Sort Order", () => {
     }
     expect(getNewSortOrder(sortState, sortField)).toBe("asc")
     expect(getNewSortOrder(sortState2, sortField)).toBe("desc")
-    expect(getNewSortOrder(sortState3, sortField)).toBe("asc")
+    expect(getNewSortOrder(sortState3, sortField2)).toBe("asc")
 });
