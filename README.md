@@ -1,4 +1,4 @@
-# RetracTable
+# RetracTable [🚀](https://www.npmjs.com/package/retractable)
 
 <a href="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg">
 <img src="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg" />
@@ -28,6 +28,7 @@
 
 <br>
 <br>
+
 This project is a scalable, lightweight, zero dependency, responsive react.js table. All that you have to do is add a `Table` element and pass an array of objects to it as the `data` prop.
 Robust features like sorting and searching are build in. Just give it a try.
 
