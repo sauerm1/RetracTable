@@ -1,5 +1,5 @@
-import  DataTable from "../component/index";
+import DataTable from '../component/index';
 
-test("Component Exists", () => {
-    expect(DataTable.exists);
+test('Component Exists', () => {
+  expect(DataTable.exists);
 });
