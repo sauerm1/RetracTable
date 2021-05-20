@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './index.css';
 import Search from './Search/Search';
 import normalizeData from './utils/normalizeData';
@@ -6,15 +6,18 @@ import searchData from './utils/searchData';
 import compareFunction from './utils/compareFunction';
 import getNewSortOrder from './utils/getNewSortOrder';
 
-const DataTable = ({ data, capitalize, excludeSearch, onRowClick }) => {
+const DataTable = ({ data, capitalize, excludeSearch, onRowClick, retract }) => {
   const [normalizedData, setNormalizedData] = useState([]);
   const [displayedData, setDisplayedData] = useState([]);
   const [fieldSelected, setFieldSelected] = useState('');
   const [stringSearched, setStringSearched] = useState('');
+  const [widthsLoaded, setWidthsLoaded] = useState(false);
+  const [columnWidths, setColumnWidths] = useState([]);
   const [sortState, setSortState] = useState({
     field: null,
     order: 'desc',
   });
+  const tableRef = useRef(null);
 
   useEffect(() => {
     setNormalizedData(normalizeData(data, capitalize));
@@ -22,7 +25,18 @@ const DataTable = ({ data, capitalize, excludeSearch, onRowClick }) => {
 
   useEffect(() => {
     setDisplayedData(normalizedData);
-  }, [normalizedData]);
+  }, [normalizedData, columnWidths]);
+
+  useEffect(() => {
+    if (tableRef?.current?.children && !widthsLoaded) {
+      const cells = tableRef.current.children;
+      const widths = Array.prototype.slice
+        .call(cells)
+        .map((i) => i.offsetWidth);
+      setColumnWidths(widths);
+      setWidthsLoaded(true);
+    }
+  }, [displayedData]);
 
   useEffect(() => {
     setDisplayedData(searchData(normalizedData, stringSearched, fieldSelected));
@@ -36,7 +50,7 @@ const DataTable = ({ data, capitalize, excludeSearch, onRowClick }) => {
     if (normalizedData.length !== 0) {
       const keys = Object.keys(normalizedData[0]);
       const headers = (
-        <div className="rTableRow">
+        <div className="rTableRow" ref={tableRef}>
           {keys.map((header, index) => {
             let arrow;
             if (sortState.field === header && sortState.order === 'asc') {
@@ -51,6 +65,7 @@ const DataTable = ({ data, capitalize, excludeSearch, onRowClick }) => {
             }
             return (
               <div
+                style={retract ? {} : { width: columnWidths[index] }}
                 onClick={() => handleSort(sortState, header)}
                 key={`header${index}`}
                 className="rTableHead"

@@ -7,7 +7,7 @@ const testCallback = (data) => {
 };
 
 const App = () => {
-  return <DataTable data={mockData} capitalize onRowClick={testCallback} />;
+  return <DataTable data={mockData} capitalize onRowClick={testCallback}/>;
 };
 
 export default App;
