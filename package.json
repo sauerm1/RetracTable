@@ -18,6 +18,7 @@
     "datagrid",
     "json"
   ],
+  "main": "index.js",
   "files": [
     "dist"
   ],
