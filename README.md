@@ -12,7 +12,7 @@
 <br>
 <br>
 
-This project is a scalable, lightweight, zero dependency, responsive react.js table. All that you have to do is add a `Table` element and pass an array of objects to it as the `data` prop.
+This project is a scalable, lightweight, zero dependency, responsive, accessible react.js table. All that you have to do is add a `Table` element and pass an array of objects to it as the `data` prop.
 Robust features like sorting and searching are build in. Just give it a try.
 
 <br>
@@ -137,7 +137,7 @@ return(
 
 ## `onRowClick`
 
-Pass a function to the `onRowClick` prop and it will be executed when a row is clicked on. The row that is clicked on will be passed as an object to your function's first argument
+Pass a function to the `onRowClick` prop and it will be executed when a row is clicked on. The row that is clicked on will be passed as an object to your function's first argument. You can also tab through the rows and use the enter key to trigger the onRowClick function.
 
 - required: `false`
 - default: `null`

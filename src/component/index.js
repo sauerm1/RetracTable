@@ -6,7 +6,13 @@ import searchData from './utils/searchData';
 import compareFunction from './utils/compareFunction';
 import getNewSortOrder from './utils/getNewSortOrder';
 
-const DataTable = ({ data, capitalize, excludeSearch, onRowClick, retract }) => {
+const DataTable = ({
+  data,
+  capitalize,
+  excludeSearch,
+  onRowClick,
+  retract,
+}) => {
   const [normalizedData, setNormalizedData] = useState([]);
   const [displayedData, setDisplayedData] = useState([]);
   const [fieldSelected, setFieldSelected] = useState('');
@@ -45,6 +51,12 @@ const DataTable = ({ data, capitalize, excludeSearch, onRowClick, retract }) => 
   useEffect(() => {
     handleSort(sortState, Object.keys(data[0])[0]);
   }, []);
+
+  const handleKeyPress = (e, row) => {
+    if (e.charCode == 13) {
+      onRowClick(row);
+    }
+  };
 
   const renderTableData = (data) => {
     if (normalizedData.length !== 0) {
@@ -98,6 +110,8 @@ const DataTable = ({ data, capitalize, excludeSearch, onRowClick, retract }) => 
         });
         return (
           <div
+            onKeyPress={onRowClick ? (e) => handleKeyPress(e, row) : null}
+            tabIndex={onRowClick ? 0 : null}
             onClick={onRowClick ? () => onRowClick(row) : null}
             key={`row${index}`}
             className={`rTableRow ${onRowClick ? 'rTableRowHover' : ''}`}
