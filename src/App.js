@@ -12,6 +12,8 @@ const App = () => {
       data={mockData}
       capitalize
       onRowClick={testCallback}
+    //   excludeSearch
+    //   disableSort
     />
   );
 };

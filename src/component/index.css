@@ -17,11 +17,14 @@
     display: table-header-group;
 }
 
+.rPointer {
+    cursor: pointer;
+}
+
 .rTableHead {
     display: table-cell;
     background-color: var(--rLightGrey);
     font-weight: bold;
-    cursor: pointer;
     padding: 10px 10px;
 }
 

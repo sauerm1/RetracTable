@@ -12,6 +12,7 @@ const DataTable = ({
   excludeSearch,
   onRowClick,
   retract,
+  disableSort,
 }) => {
   const [normalizedData, setNormalizedData] = useState([]);
   const [displayedData, setDisplayedData] = useState([]);
@@ -49,6 +50,8 @@ const DataTable = ({
   }, [stringSearched, fieldSelected]);
 
   useEffect(() => {
+      console.log(sortState)
+      console.log(Object.keys(data[0])[0])
     handleSort(sortState, Object.keys(data[0])[0]);
   }, []);
 
@@ -62,13 +65,15 @@ const DataTable = ({
     if (normalizedData.length !== 0) {
       const keys = Object.keys(normalizedData[0]);
       const headers = (
-        <div className="rTableRow" ref={tableRef}>
+        <div className={`rTableRow ${disableSort ? "" : "rPointer"}`}  ref={tableRef}>
           {keys.map((header, index) => {
             let arrow;
-            if (sortState.field === header && sortState.order === 'asc') {
+            const field = sortState.field.toUpperCase()
+            const head = header.toUpperCase()
+            if (field === head && sortState.order === 'asc') {
               arrow = <i className="rArrow rArrowDown"></i>;
             } else if (
-              sortState.field === header &&
+              field === head &&
               sortState.order === 'desc'
             ) {
               arrow = <i className="rArrow rArrorUp"></i>;
@@ -78,12 +83,14 @@ const DataTable = ({
             return (
               <div
                 style={retract ? {} : { width: columnWidths[index] }}
-                onClick={() => handleSort(sortState, header)}
+                onClick={
+                  disableSort ? null : () => handleSort(sortState, header)
+                }
                 key={`header${index}`}
                 className="rTableHead"
               >
                 {header}
-                {arrow}
+                {disableSort ? null : arrow}
               </div>
             );
           })}

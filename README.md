@@ -12,7 +12,7 @@
 <br>
 <br>
 
-This project is a scalable, lightweight, zero dependency, responsive, accessible react.js table. All that you have to do is add a `Table` element and pass an array of objects to it as the `data` prop.
+This project is a convenient, scalable, lightweight, zero dependency, responsive, accessible react.js table. Getting started is so simple. All that you have to do is add a `<Table />` element and pass an array of objects to it as the `data` prop.
 Robust features like sorting and searching are build in. Just give it a try.
 
 <br>
@@ -71,10 +71,12 @@ export default App;
 | [capitalize](#capitalize)       | False    | False   | [See `capitalize` below](#capitalize)       |
 | [excludeSearch](#excludeSearch) | False    | False   | [See `excludeSearch` below](#excludeSearch) |
 | [onRowClick](#onRowClick)       | False    | False   | [See `onRowClick` below](#onRowClick)       |
+<br>
 
 | Less Popular Props  | Required | Default | Usage                           |
 | ------------------- | -------- | ------- | ------------------------------- |
 | [retract](#retract) | False    | False   | [See `retract` below](#retract) |
+| [disableSort](#disableSort) | False    | False   | [See `disableSort` below](#disableSort) |
 
 <hr>
 <br>
@@ -171,6 +173,23 @@ Adding this prop will shrink or grow the width of the table columns as you searc
 ```js
 return(
     <Table data={people} retract>
+)
+```
+
+<br>
+
+## `disableSort`
+
+Adding the `disableSort` prop disable sorting in your table. 
+
+- required: `false`
+- default: `false`
+- options: `true/false`
+- usage:
+
+```js
+return(
+    <Table data={people} disableSort>
 )
 ```
 
