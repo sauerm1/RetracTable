@@ -1,4 +1,4 @@
-import capitalizeString from './capitalizeString';
+import capitalizeString from "./capitalizeString";
 
 const normalizeData = (data, capitalize) => {
   let keys = [];
@@ -16,7 +16,7 @@ const normalizeData = (data, capitalize) => {
       if (r[k] !== undefined && r[k] !== null) {
         cell = r[k];
       } else {
-        cell = '';
+        cell = "";
       }
       row[capitalize ? capitalizeString(k) : k] = cell;
     });

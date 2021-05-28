@@ -3,7 +3,7 @@ const searchData = (normalizedData, stringSearched, fieldSelected) => {
   const searchString = stringSearched?.toUpperCase();
   for (let row = 0; row < normalizedData.length; row++) {
     let found = false;
-    if (fieldSelected === '') {
+    if (fieldSelected === "") {
       for (let cell in normalizedData[row]) {
         if (
           !found &&

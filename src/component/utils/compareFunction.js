@@ -4,16 +4,16 @@ const compareFunction = (column, order) => {
       return 0;
     }
     const varA =
-      typeof a[column] === 'string' ? a[column].toUpperCase() : a[column];
+      typeof a[column] === "string" ? a[column].toUpperCase() : a[column];
     const varB =
-      typeof b[column] === 'string' ? b[column].toUpperCase() : b[column];
+      typeof b[column] === "string" ? b[column].toUpperCase() : b[column];
     let comparison = 0;
     if (varA > varB) {
       comparison = 1;
     } else if (varA < varB) {
       comparison = -1;
     }
-    return order === 'desc' ? comparison * -1 : comparison;
+    return order === "desc" ? comparison * -1 : comparison;
   };
 };
 
