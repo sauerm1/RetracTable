@@ -1,5 +1,7 @@
 # RetracTable [🚀](https://www.npmjs.com/package/retractable)
 
+A React table for the rest of us.
+
 <a href="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg">
 <img src="https://github.com/sauerm1/RetracTable/workflows/Tests/badge.svg" />
 </a>
@@ -65,18 +67,19 @@ export default App;
 
 # Props
 
-| Popular Props                   | Required | Default | Usage                                       |
-| ------------------------------- | -------- | ------- | ------------------------------------------- |
-| [data](#data)                   | True     | null    | [See `data` below](#data)                   |
-| [capitalize](#capitalize)       | False    | False   | [See `capitalize` below](#capitalize)       |
-| [excludeSearch](#excludeSearch) | False    | False   | [See `excludeSearch` below](#excludeSearch) |
-| [onRowClick](#onRowClick)       | False    | False   | [See `onRowClick` below](#onRowClick)       |
+| Popular Props             | Required | Default | Usage                                 |
+| ------------------------- | -------- | ------- | ------------------------------------- |
+| [data](#data)             | True     | null    | [See `data` below](#data)             |
+| [capitalize](#capitalize) | False    | False   | [See `capitalize` below](#capitalize) |
+| [onRowClick](#onRowClick) | False    | False   | [See `onRowClick` below](#onRowClick) |
+
 <br>
 
-| Less Popular Props  | Required | Default | Usage                           |
-| ------------------- | -------- | ------- | ------------------------------- |
-| [retract](#retract) | False    | False   | [See `retract` below](#retract) |
-| [disableSort](#disableSort) | False    | False   | [See `disableSort` below](#disableSort) |
+| Less Popular Props              | Required | Default | Usage                                       |
+| ------------------------------- | -------- | ------- | ------------------------------------------- |
+| [retract](#retract)             | False    | False   | [See `retract` below](#retract)             |
+| [excludeSearch](#excludeSearch) | False    | False   | [See `excludeSearch` below](#excludeSearch) |
+| [disableSort](#disableSort)     | False    | False   | [See `disableSort` below](#disableSort)     |
 
 <hr>
 <br>
@@ -180,7 +183,7 @@ return(
 
 ## `disableSort`
 
-Adding the `disableSort` prop disable sorting in your table. 
+Adding the `disableSort` prop disables sorting in your table.
 
 - required: `false`
 - default: `false`

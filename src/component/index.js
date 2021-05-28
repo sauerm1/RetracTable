@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './index.css';
-import Search from './Search/Search';
-import normalizeData from './utils/normalizeData';
-import searchData from './utils/searchData';
-import compareFunction from './utils/compareFunction';
-import getNewSortOrder from './utils/getNewSortOrder';
+import React, { useEffect, useRef, useState } from "react";
+import "./index.css";
+import Search from "./Search/Search";
+import normalizeData from "./utils/normalizeData";
+import searchData from "./utils/searchData";
+import compareFunction from "./utils/compareFunction";
+import getNewSortOrder from "./utils/getNewSortOrder";
 
 const DataTable = ({
   data,
@@ -16,13 +16,13 @@ const DataTable = ({
 }) => {
   const [normalizedData, setNormalizedData] = useState([]);
   const [displayedData, setDisplayedData] = useState([]);
-  const [fieldSelected, setFieldSelected] = useState('');
-  const [stringSearched, setStringSearched] = useState('');
+  const [fieldSelected, setFieldSelected] = useState("");
+  const [stringSearched, setStringSearched] = useState("");
   const [widthsLoaded, setWidthsLoaded] = useState(false);
   const [columnWidths, setColumnWidths] = useState([]);
   const [sortState, setSortState] = useState({
     field: null,
-    order: 'desc',
+    order: "desc",
   });
   const tableRef = useRef(null);
 
@@ -50,8 +50,8 @@ const DataTable = ({
   }, [stringSearched, fieldSelected]);
 
   useEffect(() => {
-      console.log(sortState)
-      console.log(Object.keys(data[0])[0])
+    console.log(sortState);
+    console.log(Object.keys(data[0])[0]);
     handleSort(sortState, Object.keys(data[0])[0]);
   }, []);
 
@@ -65,17 +65,17 @@ const DataTable = ({
     if (normalizedData.length !== 0) {
       const keys = Object.keys(normalizedData[0]);
       const headers = (
-        <div className={`rTableRow ${disableSort ? "" : "rPointer"}`}  ref={tableRef}>
+        <div
+          className={`rTableRow ${disableSort ? "" : "rPointer"}`}
+          ref={tableRef}
+        >
           {keys.map((header, index) => {
             let arrow;
-            const field = sortState.field.toUpperCase()
-            const head = header.toUpperCase()
-            if (field === head && sortState.order === 'asc') {
+            const field = sortState.field.toUpperCase();
+            const head = header.toUpperCase();
+            if (field === head && sortState.order === "asc") {
               arrow = <i className="rArrow rArrowDown"></i>;
-            } else if (
-              field === head &&
-              sortState.order === 'desc'
-            ) {
+            } else if (field === head && sortState.order === "desc") {
               arrow = <i className="rArrow rArrorUp"></i>;
             } else {
               arrow = <i className="rArrow rArrorUp rArrowHide"></i>;
@@ -99,7 +99,7 @@ const DataTable = ({
 
       const tableData = data.map((row, index) => {
         const mappedRow = Object.values(row).map((value, index) => {
-          if (typeof value === 'object') {
+          if (typeof value === "object") {
             return (
               <div key={`data${index}`} className="rTableCell rMoreDataLink">
                 more
@@ -121,7 +121,7 @@ const DataTable = ({
             tabIndex={onRowClick ? 0 : null}
             onClick={onRowClick ? () => onRowClick(row) : null}
             key={`row${index}`}
-            className={`rTableRow ${onRowClick ? 'rTableRowHover' : ''}`}
+            className={`rTableRow ${onRowClick ? "rTableRowHover" : ""}`}
           >
             {mappedRow}
           </div>

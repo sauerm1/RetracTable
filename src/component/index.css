@@ -1,136 +1,136 @@
 :root {
-    --rBlack: #000000;
-    --rDarkGrey: #1f1f1f;
-    --rLightGrey: #ebebeb;
-    --rWhite: #ffffff;
-    --rBlue: #4a4aff;
+  --rBlack: #000000;
+  --rDarkGrey: #1f1f1f;
+  --rLightGrey: #ebebeb;
+  --rWhite: #ffffff;
+  --rBlue: #4a4aff;
 }
 
 .rTable {
-    display: table;
-    margin: 10px auto;
-    border: 1px solid var(--rLightGrey);
-    border-radius: 5px;
+  display: table;
+  margin: 10px auto;
+  border: 1px solid var(--rLightGrey);
+  border-radius: 5px;
 }
 
 .rTableHeading {
-    display: table-header-group;
+  display: table-header-group;
 }
 
 .rPointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .rTableHead {
-    display: table-cell;
-    background-color: var(--rLightGrey);
-    font-weight: bold;
-    padding: 10px 10px;
+  display: table-cell;
+  background-color: var(--rLightGrey);
+  font-weight: bold;
+  padding: 10px 10px;
 }
 
 .rTableRow {
-    display: table-row;
+  display: table-row;
 }
 
 .rTableRowHover:hover {
-    background-color: var(--rLightGrey);
-    cursor: pointer;
+  background-color: var(--rLightGrey);
+  cursor: pointer;
 }
 
 .rTableCell:first-child {
-    border-left: none;
+  border-left: none;
 }
 
 .rTableCell {
-    display: table-cell;
-    padding: 8px 10px;
-    border-top: 1px solid var(--rLightGrey);
-    border-left: 1px solid var(--rLightGrey);
+  display: table-cell;
+  padding: 8px 10px;
+  border-top: 1px solid var(--rLightGrey);
+  border-left: 1px solid var(--rLightGrey);
 }
 
 .rArrow {
-    border: solid var(--rDarkGrey);
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-left: 5px;
+  border: solid var(--rDarkGrey);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 5px;
 }
 
 .rArrorUp {
-    margin-bottom: -1px;
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
+  margin-bottom: -1px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 }
 
 .rArrowDown {
-    margin-bottom: 3px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+  margin-bottom: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
 .rArrowHide {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .rMoreDataLink {
-    position: relative;
-    color: var(--rBlue);
-    text-decoration: underline;
-    /* cursor: pointer; */
-    text-align: center;
+  position: relative;
+  color: var(--rBlue);
+  text-decoration: underline;
+  /* cursor: pointer; */
+  text-align: center;
 }
 
 .rMoreDataLink .rMoreData {
-    visibility: hidden;
-    background-color: var(--rDarkGrey);
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    padding: 10px 10px;
-    position: absolute;
-    z-index: 1;
-    top: 99%;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: pre;
-    font-family: monospace;
-    cursor: text;
+  visibility: hidden;
+  background-color: var(--rDarkGrey);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px 10px;
+  position: absolute;
+  z-index: 1;
+  top: 99%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: pre;
+  font-family: monospace;
+  cursor: text;
 }
 
 .rMoreDataLink .rMoreData::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent var(--rDarkGrey) transparent;
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--rDarkGrey) transparent;
 }
 
 .rMoreDataLink:hover .rMoreData {
-    visibility: visible;
+  visibility: visible;
 }
 
 .rsearchContainer {
-    text-align: center;
+  text-align: center;
 }
 
 .rdropdown {
-    height: 30px;
-    padding-left: 5px;
-    max-width: 200px;
-    margin: 0px 10px;
-    border-radius: 5px;
-    border: solid 1px var(--rLightGrey);
-    margin-top: 1px;
-    cursor: pointer;
+  height: 30px;
+  padding-left: 5px;
+  max-width: 200px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  border: solid 1px var(--rLightGrey);
+  margin-top: 1px;
+  cursor: pointer;
 }
 
 .rsearchBox {
-    height: 25px;
-    max-width: 200px;
-    margin: 0px 10px;
-    border-radius: 5px;
-    border: solid 1px var(--rLightGrey);
-    padding: 1px 10px;
+  height: 25px;
+  max-width: 200px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  border: solid 1px var(--rLightGrey);
+  padding: 1px 10px;
 }
